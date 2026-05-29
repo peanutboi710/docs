@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>memo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+        }
+        textarea{
+            resize: none;
+        }
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #page{
+            height: 100vh;
+            flex-direction: column;
+        }
+        #container {
+            flex-direction: column;
+        }
+        #container h1 {
+            text-align: center;
+        }
+        #memoWriter{
+            flex-direction: column;
+            gap: 8px;
+            background-color: beige;
+            padding: 16px;
+            border: 1px solid gray;
+            border-radius: 8px;
+            /* border-radius: 50%; */
+        }    
+        #memoWriter button {
+            padding: 6px 12px;
+        }
+        #memoList{
+            gap: 8px;
+            padding: 16px;
+            flex-wrap: wrap;
+        }
+        #memoList div{
+            width: 240px;
+            height: 160px;
+            border: 1px solid gray;
+            padding: 16px;
+            background-color: #fff7c5;
+
+        }
+    </style>
+<body>
+    <section id="page" class="center">
+        <section id="container" class="center">
+            <h1>Lets Memo</h1>
+            <form id="memoWriter" class="center">
+                <textarea name="memo" required>
+                </textarea>
+                <button>작성</button>
+            </form>
+            <secttion id="memoList" class="center">
+                <!-- 작성된 메모를 배치 -->
+            </secttion>
+        </section>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", main);
+
+        const memoWriter = document.querySelector("#memoWriter");
+        const memoList = document.querySelector("#memoList");
+
+
+        function main(){
+            console.log("DOM loaded");
+            memoWriter.addEventListener("submit", memoWriterHandler);
+
+            //화면 표시
+            drawPrevMemo();
+        }
+        /*  일단 함수표현식으로 타입추론을 하면서 작성
+            나중에 꺼내서 아래에 배치 */
+        function memoWriterHandler(event){
+            event.preventDefault();
+            console.log("form logic start");
+            const formData = new FormData(event.target);
+            // console.log(...formData);
+            const memoText = formData.get("memo");
+            console.log(memoText);
+
+            // Data 추가시 LocalStorage에 저장
+            const id = saveMemo(memoText);
+
+            // 추가할 텍스트
+            // 내가 호출되었을 때의 스코프가 아니라 선언되었을 때의 스코프를 기억한다 -> 렉시컬 스코프
+            // memoList는 기억하는데 memoText 기억 X.
+            drawMemoBox(memoText, id);
+
+            /*  const memoBox = document.createElement("div");
+            //  memoBox.textContent = formData.get("memo");
+            memoBox.textContent = memoText;
+            memoList.append(memoBox); */
+        }
+
+        function drawMemoBox(memoText, id) {
+            const memoBox = document.createElement("div");
+            memoBox.textContent = memoText;
+            memoList.append(memoBox);
+        }
+
+        function saveMemo(memoText) {
+            const prevMemo = localStorage.getItem("memo") ?? {};
+            let memoObj;
+            try {
+                memoObj = JSON.parse(prevMemo);
+            } catch (err) {
+                console.log(err);
+                memoObj = {};
+            }
+            memoObj[Date.now()] = memoText;
+            localStorage.setItem("memo", JSON.stringify(memoObj));
+        }
+
+        function getPrevMemo() {
+
+        }
+
+        function drawMemoBox(memoText, memoList) {
+            const memoBox = document.createElement("div");
+            memoBox.textContent = memoText;
+            memoList.append(memoBox);
+
+            //삭제
+            const rmBtn = document.createElement("button");
+            rmBtn.textContent = "삭제";
+            rmBtn.addEventListener("click", () => {
+                const prevMemo = getPrevMemo();
+                prevMemo[id] = undefined;
+                localStorage.setItem("memo", JSON.stringify(prevMemo));
+                memoBox.remove();
+            });
+            memoBox.append(rmBtn); //DOM만 지운 것
+            //Local Storage도 지워야 함
+        }
+
+
+        function drawPrevMemo() {
+            let prevMemo;
+            try {
+                prevMemo = JSON.parse(localStorage.getItem("memo"));
+            } catch {
+                prevMemo = {};
+            }
+
+            console.log(prevMemo);
+            
+            for (const key in prevMemo) {
+                drawMemoBox(prevMemo[key]);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEMO</title>
+  <!-- favicon, og, css feamework setting, ga, hostdog-->
+   
+  <style>
+    /*https://noonnu.co.kr*/
+    /*https://fonts.google.com/?lang=ko_Kore*/
+    * {
+      box-sizing: border-box;
+    }
+    :body{
+      /* 100vh 때 스크롤 생기는 원인 해결 */
+      margin: 0;
+      padding: 0;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: honeydew;
+      color: black;
+      background-image: url("./img/bg.jpg");
+      background-size: cover;
+      background-position: center;
+      ;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>MEMO, 메모</h1>
+    <button>click</button>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", main);
+
+    const container = document.querySelector("#container");
+    const button = document.querySelector("#container > button");
+    //  호이스팅 되므로 함수 선언문을 뒤에다 적어줌
+    function main(){
+      console.log("DOM loaded");
+      button.addEventListener("click", () => {
+        location.href = "memo.html";
+        //new window >
+        // window.open("memo.html");
+      })
+    }
+  </script>
+</body>
+</html>
