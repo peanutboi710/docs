@@ -1,0 +1,161 @@
+/* 1. 전체 공통 서식 및 초기화 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f5f5f5;
+}
+
+textarea {
+  resize: none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nanum-pen-script-regular {
+  font-family: "Nanum Pen Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 2. 레이아웃 큰 틀 정의 (독립 스크롤 고정용) */
+#page {
+  height: 100vh;
+  flex-direction: column;
+  overflow: hidden; /* 레이아웃이 위로 터져나가는 것 방지 */
+}
+
+#container {
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 600px;
+  height: 95vh;
+  justify-content: flex-start; /* 상단 배치를 위해 변경 */
+}
+
+#container h1 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.main-link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 120%;
+  font-weight: 100;
+}
+
+#topSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+  align-items: center;
+  flex-shrink: 0; /* 입력창 영역 크기 고정 */
+}
+
+/* 3. 메모 입력 폼 스타일 */
+#memoWriter {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  background-color: beige;
+  padding: 16px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  width: 100%;
+}
+
+#memoWriter textarea {
+  flex: 1;
+  height: 50px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+#memoWriter .btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#memoWriter button {
+  padding: 4px 12px;
+  height: 24px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* 4. 스크롤 박스 영역 */
+#scrollArea {
+  width: 100%;
+  flex: 1;            /* 남은 빈 공간을 스크롤 박스가 다 채움 */
+  overflow-y: auto;   /* 데이터가 많아지면 내부에서만 스크롤 작동 */
+  padding-right: 8px; 
+  padding-bottom: 40px;
+}
+
+/* 5. [핵심 통합] 최신 메모 상자와 과거 메모 상자의 공통 스타일을 묶었습니다 */
+#singleMemoContainer, 
+.new-memo-box {
+  width: 100%;
+  height: 350px; /* 수강생님이 요청하신 350px 동일 크기 고정 */
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 24px;
+  background-color: #fff7c5;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  flex-shrink: 0; /* 크기가 임의로 찌그러지지 않게 방지 */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 과거 메모 상자들에게만 위쪽 간격을 부여합니다 */
+.new-memo-box {
+  margin-top: 24px; 
+}
+
+/* 6. 메모장 내부 알맹이 스타일 (글자 및 버튼) */
+.memo-text {
+  font-size: 24px; 
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-y: auto;
+  height: 80%;
+  
+  display: flex;            
+  align-items: center;      
+  justify-content: center;  
+  text-align: center;       
+}
+
+.memo-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.memo-btns button {
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.empty-message {
+  color: #aaa;
+  font-style: italic;
+  text-align: center;
+  margin: auto;
+}
