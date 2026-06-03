@@ -1,15 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+      rel="stylesheet"
+    />
 
-<meta property="og:title" content="Memo makes you better" />
-    <meta property="og:description" content="당신의 메모로 한편의 타이포그래피를 경험하세요" />
+    <meta property="og:title" content="Memo makes you better" />
+    <meta
+      property="og:description"
+      content="당신의 메모로 한편의 타이포그래피를 경험하세요"
+    />
     <meta property="og:url" content="https://peanutboi710.github.io/docs" />
     <!-- <meta property="og:url" content="{본인 깃허브 페이지}" /> -->
     <meta
@@ -17,83 +23,80 @@
       content="https://peanutbou710.github.io/docs/og_preview.png"
     />
 
-      <title>MEMO</title>
-  <!-- favicon, og, css feamework setting, ga, hostdog-->
-   
-  <style>
-    /*https://noonnu.co.kr*/
-    /*https://fonts.google.com/?lang=ko_Kore*/
+    <title>MEMO</title>
+    <!-- favicon, og, css feamework setting, ga, hostdog-->
 
-    .nanum-pen-script-regular {
-      font-family: "Nanum Pen Script", cursive;
-     font-weight: 400;
-      font-style: normal;
-    }
+    <style>
+      /*https://noonnu.co.kr*/
+      /*https://fonts.google.com/?lang=ko_Kore*/
 
-    * {
-      box-sizing: border-box;
-    }
-    body{
-      /* 100vh 때 스크롤 생기는 원인 해결 */
-      margin: 0;
-      padding: 0;
-    }
-    #container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-color: honeydew;
-      color: black;
-      background-image: url("./img/bg.jpg");
-      background-size: cover;
-      background-position: center;
-      font-family: 'Nanum Pen Script', cursive;
-      font-size: 200%
-    }
-    #container > h1{
-      
-    }
-    #container > button{
-      padding: 50px 100px;
-      font-family: 'Nanum Pen Script', cursive;
-      font-size: 200%;
-      font-weight: 100;
-      color: black;
-      background-color: lightgray;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      .nanum-pen-script-regular {
+        font-family: "Nanum Pen Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+      }
 
-    }
-  </style>
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        /* 100vh 때 스크롤 생기는 원인 해결 */
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: honeydew;
+        color: black;
+        background-image: url("./img/bg.jpg");
+        background-size: cover;
+        background-position: center;
+        font-family: "Nanum Pen Script", cursive;
+        font-size: 200%;
+      }
+      #container > h1 {
+      }
+      #container > button {
+        padding: 50px 100px;
+        font-family: "Nanum Pen Script", cursive;
+        font-size: 200%;
+        font-weight: 100;
+        color: black;
+        background-color: lightgray;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+    </style>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body>
+    <div id="container">
+      <h1>MEMO, 메모</h1>
+      <button>click</button>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", main);
 
-</head>
-<body>
-  <div id="container">
-    <h1>MEMO, 메모</h1>
-    <button>click</button>
-  </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", main);
-
-    const container = document.querySelector("#container");
-    const button = document.querySelector("#container > button");
-    //  호이스팅 되므로 함수 선언문을 뒤에다 적어줌
-    function main(){
-      console.log("DOM loaded");
-      button.addEventListener("click", () => {
-        location.href = "memo.html";
-        //new window >
-        // window.open("memo.html");
-      })
-    }
-  </script>
-</body>
+      const container = document.querySelector("#container");
+      const button = document.querySelector("#container > button");
+      //  호이스팅 되므로 함수 선언문을 뒤에다 적어줌
+      function main() {
+        console.log("DOM loaded");
+        button.addEventListener("click", () => {
+          location.href = "memo.html";
+          //new window >
+          // window.open("memo.html");
+        });
+      }
+    </script>
+  </body>
 </html>

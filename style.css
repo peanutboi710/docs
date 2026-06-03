@@ -98,14 +98,14 @@ textarea {
 /* 4. 스크롤 박스 영역 */
 #scrollArea {
   width: 100%;
-  flex: 1;            /* 남은 빈 공간을 스크롤 박스가 다 채움 */
-  overflow-y: auto;   /* 데이터가 많아지면 내부에서만 스크롤 작동 */
-  padding-right: 8px; 
+  flex: 1; /* 남은 빈 공간을 스크롤 박스가 다 채움 */
+  overflow-y: auto; /* 데이터가 많아지면 내부에서만 스크롤 작동 */
+  padding-right: 8px;
   padding-bottom: 40px;
 }
 
 /* 5. [핵심 통합] 최신 메모 상자와 과거 메모 상자의 공통 스타일을 묶었습니다 */
-#singleMemoContainer, 
+#singleMemoContainer,
 .new-memo-box {
   width: 100%;
   height: 350px; /* 수강생님이 요청하신 350px 동일 크기 고정 */
@@ -113,9 +113,9 @@ textarea {
   border-radius: 12px;
   padding: 24px;
   background-color: #fff7c5;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0; /* 크기가 임의로 찌그러지지 않게 방지 */
-  
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -123,22 +123,22 @@ textarea {
 
 /* 과거 메모 상자들에게만 위쪽 간격을 부여합니다 */
 .new-memo-box {
-  margin-top: 24px; 
+  margin-top: 24px;
 }
 
 /* 6. 메모장 내부 알맹이 스타일 (글자 및 버튼) */
 .memo-text {
-  font-size: 24px; 
+  font-size: 24px;
   line-height: 1.6;
   white-space: pre-wrap;
   word-break: break-all;
   overflow-y: auto;
   height: 80%;
-  
-  display: flex;            
-  align-items: center;      
-  justify-content: center;  
-  text-align: center;       
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .memo-btns {
